@@ -6,13 +6,13 @@ on:
 
 jobs:
   super-lint:
-    name: Lint code base
+    name: Fetch snapshots
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Github Action for curl
+      - name: Download image
         uses: wei/curl@v1.1.1
         with:
           args: -o "$(date +\"%Y%m%d%H%M%S\").jpg" https://www.villaclara.it/images/webcam/webcam.php
