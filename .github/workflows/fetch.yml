@@ -17,6 +17,9 @@ jobs:
         with:
           args: -o "imgs/$(date +"%Y%m%d%H%M%S").jpg" https://www.villaclara.it/images/webcam/webcam.php
 
+      - name: Delete old files
+        run: git ls-tree -r --name-only HEAD imgs | while read filename; do if [ $(git log --follow --format=%at -- $filename | tail -1) -lt $(date -d "yesterday" +%s) ]; then git rm $filename; fi; done;
+      
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Add new snapshot
