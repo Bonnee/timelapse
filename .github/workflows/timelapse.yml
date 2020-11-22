@@ -1,6 +1,10 @@
 name: Timelapse
 
-on: push
+on:
+  workflow_run:
+    workflows: ["Fetch"]
+    types:
+      - completed
 
 jobs:
   timelapse:
