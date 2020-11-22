@@ -13,7 +13,7 @@ jobs:
 
       - name: Setup FFmpeg
         uses: FedericoCarboni/setup-ffmpeg@v1-beta
-      - run: ffmpeg -framerate 30 -pattern_type glob -i '*.jpg' -vf crop=in_w:in_w*9/16,scale=1920:1080 -c:v libx264 -b:v 10000k -r 30 -pix_fmt yuv420p out.mp4
+      - run: ffmpeg -framerate 15 -pattern_type glob -i 'imgs/*.jpg' -c:v libx264 -pix_fmt yuv420p out.mp4
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
