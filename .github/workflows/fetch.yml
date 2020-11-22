@@ -1,0 +1,22 @@
+name: Fetch
+
+on:
+  schedule:
+   - cron: '*/5 * * * *'
+
+jobs:
+  super-lint:
+    name: Lint code base
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Github Action for curl
+        uses: wei/curl@v1.1.1
+        with:
+          args: -o "$(date +\"%Y%m%d%H%M%S\").jpg" https://www.villaclara.it/images/webcam/webcam.php
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Add new snapshot
