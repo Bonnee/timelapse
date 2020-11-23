@@ -17,7 +17,7 @@ jobs:
 
       - name: Setup FFmpeg
         uses: FedericoCarboni/setup-ffmpeg@v1-beta
-      - run: ffmpeg -framerate 15 -pattern_type glob -i 'imgs/*.jpg' -c:v libx264 -pix_fmt yuv420p out.mp4 -y
+      - run: ffmpeg -r 10 -pattern_type glob -i 'imgs/*.jpg' -vcodec libx264 out.mp4 -y
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
