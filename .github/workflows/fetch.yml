@@ -19,9 +19,10 @@ jobs:
 
 
       - name: Delete old files
-        uses: pkg-src/github-action-git-bash@v1.1
-        with:
-          args: "bash -c \"git ls-tree -r --name-only HEAD imgs | while read filename; do if [ $(git log --follow --format=%at -- $filename | tail -1) -lt $(date -d 'yesterday' +%s) ]; then git rm $filename; fi; done;\""
+        run: bash -c "git ls-tree -r --name-only HEAD imgs | while read filename; do if [ $(git log --follow --format=%at -- $filename | tail -1) -lt $(date -d 'yesterday' +%s) ]; then git rm $filename; fi; done;"
+      #  uses: pkg-src/github-action-git-bash@v1.1
+      #  with:
+      #    args: "bash -c \"git ls-tree -r --name-only HEAD imgs | while read filename; do if [ $(git log --follow --format=%at -- $filename | tail -1) -lt $(date -d 'yesterday' +%s) ]; then git rm $filename; fi; done;\""
               
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
