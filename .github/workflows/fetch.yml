@@ -27,4 +27,4 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Add new snapshot
-          commit_author: "action@github.com"
+          commit_author: "GitHub Actions [action@github.com]"
