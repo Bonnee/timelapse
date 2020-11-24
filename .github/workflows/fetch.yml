@@ -20,7 +20,7 @@ jobs:
 
 
       - name: Delete old files
-        run: bash -c "git ls-tree -r --name-only HEAD imgs" | while read file; do if [ $(git log --follow --format=%at -- $file | tail -1) -lt $(date -dyesterday +%s) ]; then git rm $file; fi; done
+        run: sh -c "git ls-tree -r --name-only HEAD imgs" | while read file; do if [ $(git log --follow --format=%at -- $file | tail -1) -lt $(date -dyesterday +%s) ]; then git rm $file; fi; done
         #run: bash -c "git ls-tree -r --name-only HEAD imgs | while read filename; do echo $filename; if [ $(git log --follow --format=%at -- $filename | tail -1) -lt $(date -dyesterday +%s) ]; then echo "delete"; fi; done;"
       #  uses: pkg-src/github-action-git-bash@v1.1
       #  with:
