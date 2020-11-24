@@ -1,8 +1,10 @@
 #!/bin/bash
 while read file
-  do
+do
 
-  if [ $(git log --follow --format=%at -- $file | tail -1) -lt $(date -dyesterday +%s) ]; then
+  echo "$(date -d"$(basename -s .jpg "$file")" +%s) < $(date -dyesterday +%s)"
+
+  if [ $(date -d"$(basename -s .jpg "$file")" +%s) -lt $(date -dyesterday +%s) ]; then
     git rm $file
   fi
 
